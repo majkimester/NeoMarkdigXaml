@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop" ToolsVersion="15.0">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net47</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net48</TargetFrameworks>
     <AssemblyName>Neo.Markdig.Xaml</AssemblyName>
     <RootNamespace>Neo.Markdig.Xaml</RootNamespace>
     <Authors>Neolithos</Authors>
-    <Company>TecWare Gesellschaft für Softwareentwicklung mbH</Company>
+    <Company></Company>
     <Description>Xaml/wpf extension for lunet-io/markdig.</Description>
-    <Copyright>TecWare Gesellschaft für Softwareentwicklung mbH</Copyright>
+    <Copyright></Copyright>
     <PackageLicenseUrl>https://github.com/neolithos/NeoMarkdigXaml/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/neolithos/NeoMarkdigXaml</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/neolithos/NeoMarkdigXaml.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/majkimester/NeoMarkdigXaml</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/majkimester/NeoMarkdigXaml.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>markdig markdown xaml wpf</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
