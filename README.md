@@ -34,6 +34,7 @@ Additionally, the following extensions are supported:
 - AutoLinks (such as <https://github.com>)
 - Tables
 - Extra emphasis
+- Task list (Extension)
 
 ## Styles
 

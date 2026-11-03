@@ -18,6 +18,7 @@
 // under the License.
 //
 #endregion
+using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using Markdig.Syntax;
@@ -104,8 +105,14 @@ namespace Neo.Markdig.Xaml.Renderers
 				if (listBlock.OrderedStart != null && (listBlock.DefaultOrderedStart != listBlock.OrderedStart))
 					renderer.WriteMember(List.StartIndexProperty, listBlock.OrderedStart);
 			}
+			else if (IsTaskList(listBlock))
+			{
+				renderer.WriteMember(List.MarkerStyleProperty, TextMarkerStyle.None);
+			}
 			else
+			{
 				renderer.WriteMember(List.MarkerStyleProperty, TextMarkerStyle.Disc);
+			}
 
 			renderer.WriteStartItems(nameof(List.ListItems));
 
@@ -119,6 +126,18 @@ namespace Neo.Markdig.Xaml.Renderers
 			renderer.WriteEndItems();
 			renderer.WriteEndObject();
 		} // proc Write
+
+		private bool IsTaskList(ListBlock listBlock)
+		{
+			return listBlock.Any(item =>
+						item is ListItemBlock listItem &&
+						listItem.Any(child =>
+							child is ParagraphBlock p &&
+							p.Inline.Any(inline => inline.GetType().FullName == "Markdig.Extensions.TaskLists.TaskList")
+						)
+					);
+		}
+
 	} // class ListRenderer
 
 	#endregion

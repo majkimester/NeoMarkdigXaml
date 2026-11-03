@@ -67,12 +67,13 @@
 	<Style TargetType="{x:Type TableCell}" x:Key="{x:Static mdxaml:MarkdownXaml.TableCellStyleKey}">
 		<Setter Property="BorderBrush" Value="Black"/>
 		<Setter Property="BorderThickness" Value="1,1,0,0"/>
+        <Setter Property="Padding" Value="4,2,4,2" />
 	</Style>
 	<Style TargetType="{x:Type TableRow}" x:Key="{x:Static mdxaml:MarkdownXaml.TableHeaderStyleKey}">
 		<Setter Property="FontWeight" Value="Bold"/>
 	</Style>
 	<Style TargetType="{x:Type CheckBox}" x:Key="{x:Static mdxaml:MarkdownXaml.TaskListStyleKey}">
-		<Setter Property="Margin" Value="0,0,0,-2" />
+		<Setter Property="Margin" Value="0,0,4,-2" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.ThematicBreakStyleKey}">
 		<Setter Property="BorderBrush" Value="DarkGray"/>

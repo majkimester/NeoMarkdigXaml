@@ -18,7 +18,11 @@
 // under the License.
 //
 #endregion
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using Markdig.Extensions.TaskLists;
+using Neo.Markdig.Xaml;
 
 namespace Neo.Markdig.Xaml.Renderers.Extensions
 {
@@ -30,14 +34,15 @@ namespace Neo.Markdig.Xaml.Renderers.Extensions
         /// <param name="taskList"></param>
         protected override void Write(XamlMarkdownWriter renderer, TaskList taskList)
         {
-            //var checkBox = new CheckBox
-            //{
-            //    IsEnabled = false,
-            //    IsChecked = taskList.Checked,
-            //};
+			var checkBox = new CheckBox {
+				IsEnabled = false,
+				IsChecked = taskList.Checked
+            };
 
-            //checkBox.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.TaskListStyleKey);
-            //renderer.WriteInline(new InlineUIContainer(checkBox));
+            checkBox.SetResourceReference(FrameworkElement.StyleProperty, MarkdownXaml.TaskListStyleKey);
+            renderer.WriteStartObject(typeof(InlineUIContainer));
+            renderer.WriteMember("Child", checkBox);
+            renderer.WriteEndObject();
         } // proc Write
 	} // class TaskListRenderer
 }
