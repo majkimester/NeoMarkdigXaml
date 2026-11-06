@@ -420,7 +420,7 @@ namespace Neo.Markdig.Xaml.Renderers
 			}
 		} // proc WritePendingText
 
-		private XamlMember GetContentProperty()
+		public XamlMember GetContentProperty()
 			=> xamlTypes.Peek().ContentProperty ?? throw new ArgumentNullException(nameof(XamlType.ContentProperty));
 
 		/// <summary>Write inline stream in the current type.</summary>

@@ -24,6 +24,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Xaml;
 using Markdig.Renderers.Html;
 using Markdig.Syntax.Inlines;
@@ -42,7 +43,7 @@ namespace Neo.Markdig.Xaml.Renderers.Inlines
 			if (link.IsEmail)
 				url = "mailto:" + url;
 
-			LinkInlineRenderer.WriteStartHyperlink(renderer, url, title);
+			LinkInlineRenderer.WriteStartHyperlink(renderer, url, title, Commands.Hyperlink);
 			renderer.WriteItems(title);
 			LinkInlineRenderer.WriteEndHyperlink(renderer);
 		} // proc Write
@@ -218,6 +219,10 @@ namespace Neo.Markdig.Xaml.Renderers.Inlines
 				if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
 					url = "#";
 
+				WriteStartHyperlink(renderer, url, link.Title, Commands.Image);
+				renderer.WriteStartItems(renderer.GetContentProperty(), false);
+
+
 				renderer.WriteStartObject(typeof(Image));
 				renderer.WriteResourceMember(null, MarkdownXamlStyle.Image);
 				if (!String.IsNullOrEmpty(link.Title))
@@ -229,19 +234,22 @@ namespace Neo.Markdig.Xaml.Renderers.Inlines
 					renderer.WriteMember(FrameworkElement.WidthProperty, width);
 				if (attr.TryGetPropertyInt32("height", out var height))
 					renderer.WriteMember(FrameworkElement.HeightProperty, height);
-				
+
 				renderer.WriteEndObject();
+
+				renderer.WriteEndItems();
+				WriteEndHyperlink(renderer);
 			}
 			else
 			{
-				WriteStartHyperlink(renderer, url, link.Title);
+				WriteStartHyperlink(renderer, url, link.Title, Commands.Hyperlink);
 				renderer.WriteItems(link);
 				WriteEndHyperlink(renderer);
 			}
 		} // proc Write
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void WriteStartHyperlink(XamlMarkdownWriter renderer, string url, string linkTitle)
+		internal static void WriteStartHyperlink(XamlMarkdownWriter renderer, string url, string linkTitle, RoutedCommand command)
 		{
 			// check for valid url
 			if (!url.StartsWith("#")
@@ -250,8 +258,8 @@ namespace Neo.Markdig.Xaml.Renderers.Inlines
 
 			renderer.WriteStartObject(typeof(Hyperlink));
 			renderer.WriteResourceMember(null, MarkdownXamlStyle.Hyperlink);
-			//renderer.WriteMember(Hyperlink.CommandProperty, Commands.Hyperlink);
-			//renderer.WriteMember(Hyperlink.CommandParameterProperty, url);
+			renderer.WriteMember(Hyperlink.CommandProperty, command);
+			renderer.WriteMember(Hyperlink.CommandParameterProperty, url);
 			renderer.WriteMember(Hyperlink.NavigateUriProperty, renderer.GetUri(new Uri(url, UriKind.RelativeOrAbsolute)));
 			renderer.WriteMember(FrameworkContentElement.ToolTipProperty, String.IsNullOrEmpty(linkTitle) ? url : linkTitle);
 		} // proc WriteStartHyperlink

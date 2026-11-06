@@ -22,7 +22,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using Markdig.Extensions.TaskLists;
-using Neo.Markdig.Xaml;
 
 namespace Neo.Markdig.Xaml.Renderers.Extensions
 {

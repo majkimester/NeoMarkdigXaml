@@ -39,7 +39,6 @@ namespace Neo.Markdig.Xaml.Renderers.Extensions
         {
             renderer.WriteStartObject(typeof(WpfTable));
             renderer.WriteResourceMember(null, MarkdownXamlStyle.Table);
-            var t = new WpfTable();
             
             renderer.WriteStartItems(nameof(WpfTable.Columns));
             foreach(var col in table.ColumnDefinitions)
