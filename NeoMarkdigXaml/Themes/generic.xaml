@@ -4,82 +4,105 @@
 	<!-- Document styles -->
 	<Style TargetType="{x:Type FlowDocument}" x:Key="{x:Static mdxaml:MarkdownXaml.DocumentStyleKey}">
 		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="Foreground" Value="#1f2328" />
+		<Setter Property="Background" Value="#ffffff" />
+		<Setter Property="FontSize" Value="16" />
 		<Setter Property="TextAlignment" Value="Left" />
 	</Style>
 	<Style TargetType="{x:Type List}">
-		<Setter Property="Margin" Value="40,0,0,0" />
+		<Setter Property="Margin" Value="32,0,0,0" />
 		<Setter Property="Padding" Value="0,0,0,0" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.CodeBlockStyleKey}">
-		<Setter Property="Background" Value="#ffd3d3d3" />
-		<Setter Property="FontFamily" Value="Consolas, Lucida Sans Typewriter, Courier New" />
-	</Style>
+		<Setter Property="Background" Value="#f6f8fa" />
+		<Setter Property="FontFamily" Value="Consolas, Monaco, Courier New, monospace" />
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="Margin" Value="0,16,0,16" />
+        <Setter Property="Padding" Value="16,16,16,16" />
+    </Style>
 	<Style TargetType="{x:Type Span}" x:Key="{x:Static mdxaml:MarkdownXaml.CodeStyleKey}">
-		<Setter Property="Background" Value="#ffd3d3d3" />
-		<Setter Property="FontFamily" Value="Consolas, Lucida Sans Typewriter, Courier New" />
+		<Setter Property="Background" Value="#eff1f3" />
+		<Setter Property="FontFamily" Value="Consolas, Monaco, Courier New, monospace" />
+		<Setter Property="FontSize" Value="13.6" />
 	</Style>
 	<Style TargetType="{x:Type Hyperlink}" x:Key="{x:Static mdxaml:MarkdownXaml.HyperlinkStyleKey}">
+		<Setter Property="Foreground" Value="#0969da" />
+		<Setter Property="TextDecorations" Value="None" />
 		<Setter Property="Command" Value="{x:Static mdxaml:MarkdownXaml.Hyperlink}" />
 		<Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=NavigateUri}" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading1StyleKey}">
-		<Setter Property="FontSize" Value="42" />
-		<Setter Property="Foreground" Value="#ff000000" />
-		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="FontSize" Value="32" />
+		<Setter Property="Foreground" Value="#1f2328" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="BorderBrush" Value="#d1d9e0" />
+		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="Margin" Value="0,24,0,16" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading2StyleKey}">
-		<Setter Property="FontSize" Value="20" />
-		<Setter Property="Foreground" Value="#ff000000" />
-		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="Foreground" Value="#1f2328" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="BorderBrush" Value="#d1d9e0" />
+		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="Margin" Value="0,24,0,16" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading3StyleKey}">
-		<Setter Property="FontSize" Value="18" />
-		<Setter Property="Foreground" Value="#ff000000" />
-		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="Foreground" Value="#1f2328" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="Margin" Value="0,24,0,16" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading4StyleKey}">
-		<Setter Property="FontSize" Value="18" />
-		<Setter Property="Foreground" Value="#ff000000" />
-		<Setter Property="FontWeight" Value="Light" />
-		<Setter Property="TextDecorations" Value="Underline" />
+		<Setter Property="FontSize" Value="16" />
+		<Setter Property="Foreground" Value="#1f2328" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="Margin" Value="0,24,0,16" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading5StyleKey}">
-		<!-- no changes -->
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="Foreground" Value="#1f2328" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="Margin" Value="0,24,0,16" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading6StyleKey}">
-		<!-- no changes -->
+		<Setter Property="FontSize" Value="13.6" />
+		<Setter Property="Foreground" Value="#59636e" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="Margin" Value="0,24,0,16" />
 	</Style>
 	<Style TargetType="{x:Type Image}" x:Key="{x:Static mdxaml:MarkdownXaml.ImageStyleKey}">
 		<Setter Property="MaxHeight" Value="{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelHeight)}" />
 		<Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelWidth)}" />
 	</Style>
 	<Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.QuoteBlockStyleKey}">
-		<Setter Property="BorderBrush" Value="LightGray" />
-		<Setter Property="BorderThickness" Value="4,0,0,0" />
-		<Setter Property="Foreground" Value="Gray" />
-		<Setter Property="Padding" Value="16,0,0,0" />
+		<Setter Property="BorderBrush" Value="#d1d9e0" />
+		<Setter Property="BorderThickness" Value="3,0,0,0" />
+		<Setter Property="Foreground" Value="#59636e" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,8,0" />
 	</Style>
-	<Style TargetType="{x:Type Table}" x:Key="{x:Static mdxaml:MarkdownXaml.TableStyleKey}">
-		<Setter Property="BorderBrush" Value="Black"/>
-		<Setter Property="BorderThickness" Value="0,0,1,1"/>
-		<Setter Property="CellSpacing" Value="0"/>
-	</Style>
-	<Style TargetType="{x:Type TableCell}" x:Key="{x:Static mdxaml:MarkdownXaml.TableCellStyleKey}">
-		<Setter Property="BorderBrush" Value="Black"/>
+    <Style TargetType="{x:Type Table}" x:Key="{x:Static mdxaml:MarkdownXaml.TableStyleKey}">
+		<Setter Property="BorderBrush" Value="#d1d9e0"/>
 		<Setter Property="BorderThickness" Value="1,1,0,0"/>
-        <Setter Property="Padding" Value="4,2,4,2" />
-	</Style>
+		<Setter Property="CellSpacing" Value="0"/>
+    </Style>
+	<Style TargetType="{x:Type TableCell}" x:Key="{x:Static mdxaml:MarkdownXaml.TableCellStyleKey}">
+		<Setter Property="BorderBrush" Value="#d1d9e0"/>
+		<Setter Property="BorderThickness" Value="0,0,1,1"/>
+        <Setter Property="Padding" Value="13,6,13,6" />
+    </Style>
 	<Style TargetType="{x:Type TableRow}" x:Key="{x:Static mdxaml:MarkdownXaml.TableHeaderStyleKey}">
-		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
 	</Style>
 	<Style TargetType="{x:Type CheckBox}" x:Key="{x:Static mdxaml:MarkdownXaml.TaskListStyleKey}">
 		<Setter Property="Margin" Value="0,0,4,-2" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.ThematicBreakStyleKey}">
-		<Setter Property="BorderBrush" Value="DarkGray"/>
+		<Setter Property="BorderBrush" Value="#d1d9e0"/>
 		<Setter Property="BorderThickness" Value="0,0,0,1"/>
 		<Setter Property="LineHeight" Value="1" />
-		<Setter Property="Margin" Value="3cm,0" />
+		<Setter Property="Margin" Value="0,24,0,24" />
 	</Style>
 	<Style TargetType="{x:Type Span}" x:Key="{x:Static mdxaml:MarkdownXaml.SubscriptStyleKey}">
 		<Setter Property="Typography.Variants" Value="Subscript" />
@@ -94,6 +117,7 @@
 		<Setter Property="TextBlock.TextDecorations" Value="Underline" />
 	</Style>
 	<Style TargetType="{x:Type Span}" x:Key="{x:Static mdxaml:MarkdownXaml.MarkedStyleKey}">
-		<Setter Property="Background" Value="Yellow" />
+		<Setter Property="Background" Value="#fff8c5" />
+		<Setter Property="Foreground" Value="#1f2328" />
 	</Style>
 </ResourceDictionary>

@@ -60,7 +60,7 @@ namespace Neo.Markdig.Xaml
 		Subscript,
 		/// <summary>Resource Key for the SuperscriptStyle.</summary>
 		Superscript,
-		/// <summary>Resource Key for the TableStyle.</summary>
+		/// <summary>Resource Key for the TableContainerStyle.</summary>
 		Table,
 		/// <summary>Resource Key for the TableCellStyle.</summary>
 		TableCell,
