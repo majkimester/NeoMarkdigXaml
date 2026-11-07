@@ -43,6 +43,16 @@ namespace NeoMarkdigXaml.Demo
         }
         private string textPreview = "";
 
+        /// <summary>
+        /// Image base dir.
+        /// </summary>
+        public string ImageBaseDir
+        {
+            get { return imageBaseDir; }
+            set { SetField(ref imageBaseDir, value); }
+        }
+        private string imageBaseDir = "";
+
         #endregion Properties
 
         #region PropertyChanged

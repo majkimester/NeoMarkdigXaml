@@ -61,9 +61,13 @@ Auto link:
 
 You can easily insert [inline links with text](https://commonmark.org) that direct to websites. 
 
-To include an image, use an exclamation mark followed by alt text and the image URL:
+To include an web image, use an exclamation mark followed by alt text and the image URL:
 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+And local image:
+
+![Local image](sampleimage.jpg "Local image")
 
 
 ## Hard Line Breaks

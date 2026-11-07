@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows;
@@ -17,7 +18,10 @@ namespace NeoMarkdigXaml.Demo
 
             CommandBindings.Add(new CommandBinding(NavigationCommands.GoToPage, (sender, e) => Process.Start((string)e.Parameter)));
 
-            this.DataContext = new DemoViewModel();
+            this.DataContext = new DemoViewModel
+            {
+                ImageBaseDir = AppDomain.CurrentDomain.BaseDirectory
+            };
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)

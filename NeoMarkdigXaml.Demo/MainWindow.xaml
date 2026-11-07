@@ -10,7 +10,7 @@
         Loaded="Window_Loaded_1">
     <Window.Resources>
 
-        <demo:TextToFlowDocumentConverterNeo x:Key="TextToFlowDocumentConverterNeo"/>
+        <demo:TextToFlowDocumentMultiValueConverter x:Key="TextToFlowDocumentMultiValueConverter"/>
 
         <demo:BoolToEnabledConverter x:Key="BoolToEnabledConverter"/>
 
@@ -59,16 +59,23 @@
                              BorderThickness="1"
                              Text="{Binding TextMarkdown, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <FlowDocumentScrollViewer x:Name="DocumentPreview"
-                                  Grid.Row="1"
-                                  Grid.Column="1"
-                                  VerticalAlignment="Stretch"
-                                  HorizontalAlignment="Stretch"
-                                  Margin="5"
-                                  Document="{Binding TextPreview, Converter={StaticResource TextToFlowDocumentConverterNeo}}"
-                                  BorderBrush="DimGray"
-                                  BorderThickness="1"
-                                  VerticalScrollBarVisibility="Auto"/>
+                    <FlowDocumentScrollViewer 
+                        x:Name="DocumentPreview"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        BorderBrush="DimGray"
+                        BorderThickness="1"
+                        VerticalScrollBarVisibility="Auto">
+                        <FlowDocumentScrollViewer.Document>
+                            <MultiBinding Converter="{StaticResource TextToFlowDocumentMultiValueConverter}">
+                                <Binding Path="TextPreview" />
+                                <Binding Path="ImageBaseDir" />
+                            </MultiBinding>
+                        </FlowDocumentScrollViewer.Document>
+                    </FlowDocumentScrollViewer>
                 </Grid>
             </TabItem>
             
@@ -93,15 +100,22 @@
                              BorderThickness="1"
                              IsReadOnly="False"/>
 
-                    <FlowDocumentScrollViewer Grid.Row="0"
-                                  Grid.Column="1"
-                                  VerticalAlignment="Stretch"
-                                  HorizontalAlignment="Stretch"
-                                  Margin="5"
-                                  Document="{Binding ElementName=demoSource, Path=Text, Converter={StaticResource TextToFlowDocumentConverterNeo}}"
-                                  BorderBrush="DimGray"
-                                  BorderThickness="1"
-                                  VerticalScrollBarVisibility="Auto"/>
+                    <FlowDocumentScrollViewer 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        BorderBrush="DimGray"
+                        BorderThickness="1"
+                        VerticalScrollBarVisibility="Auto">
+                        <FlowDocumentScrollViewer.Document>
+                            <MultiBinding Converter="{StaticResource TextToFlowDocumentMultiValueConverter}">
+                                <Binding ElementName="demoSource" Path="Text" />
+                                <Binding Path="ImageBaseDir" />
+                            </MultiBinding>
+                        </FlowDocumentScrollViewer.Document>
+                    </FlowDocumentScrollViewer>
                 </Grid>
             </TabItem>
         </TabControl>
