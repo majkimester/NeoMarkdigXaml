@@ -20,6 +20,6 @@
     <AssemblyVersion>1.0.10.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.25.0" />
+    <PackageReference Include="Markdig" Version="1.6.0" />
   </ItemGroup>
 </Project>

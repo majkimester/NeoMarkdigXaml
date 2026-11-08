@@ -100,6 +100,12 @@ namespace Neo.Markdig.Xaml.Renderers
 			this.runType = SchemaContext.GetXamlType(typeof(Run)) ?? throw new ArgumentNullException(nameof(Run));
 			this.runTextMember = runType.GetMember(nameof(Run.Text)) ?? throw new ArgumentNullException(nameof(Run.Text));
 
+			// Extension renderers
+			ObjectRenderers.Add(new AlertBlockRenderer());            // Shall be before QuoteBlockRenderer
+			ObjectRenderers.Add(new AlertHeaderInlineRenderer());
+			ObjectRenderers.Add(new TableRenderer());
+			ObjectRenderers.Add(new TaskListRenderer());
+
 			// Default block renderers
 			ObjectRenderers.Add(new CodeBlockRenderer());
 			ObjectRenderers.Add(new ListRenderer());
@@ -118,9 +124,6 @@ namespace Neo.Markdig.Xaml.Renderers
 			ObjectRenderers.Add(new LinkInlineRenderer());
 			ObjectRenderers.Add(new LiteralInlineRenderer());
 
-			// Extension renderers
-			ObjectRenderers.Add(new TableRenderer());
-			ObjectRenderers.Add(new TaskListRenderer());
 		} // ctor
 
 		#endregion
@@ -589,6 +592,27 @@ namespace Neo.Markdig.Xaml.Renderers
 					return MarkdownXaml.MarkedStyleKey;
 				case MarkdownXamlStyle.QuoteBlock:
 					return MarkdownXaml.QuoteBlockStyleKey;
+				case MarkdownXamlStyle.AlertBlockNote:
+					return MarkdownXaml.AlertBlockNoteStyleKey;
+				case MarkdownXamlStyle.AlertBlockTip:
+					return MarkdownXaml.AlertBlockTipStyleKey;
+				case MarkdownXamlStyle.AlertBlockImportant:
+					return MarkdownXaml.AlertBlockImportantStyleKey;
+				case MarkdownXamlStyle.AlertBlockWarning:
+					return MarkdownXaml.AlertBlockWarningStyleKey;
+				case MarkdownXamlStyle.AlertBlockCaution:
+					return MarkdownXaml.AlertBlockCautionStyleKey;
+				case MarkdownXamlStyle.AlertBlockHeaderNote:
+					return MarkdownXaml.AlertBlockHeaderNoteStyleKey;
+				case MarkdownXamlStyle.AlertBlockHeaderTip:
+					return MarkdownXaml.AlertBlockHeaderTipStyleKey;
+				case MarkdownXamlStyle.AlertBlockHeaderImportant:
+					return MarkdownXaml.AlertBlockHeaderImportantStyleKey;
+				case MarkdownXamlStyle.AlertBlockHeaderWarning:
+					return MarkdownXaml.AlertBlockHeaderWarningStyleKey;
+				case MarkdownXamlStyle.AlertBlockHeaderCaution:
+					return MarkdownXaml.AlertBlockHeaderCautionStyleKey;
+
 				case MarkdownXamlStyle.StrikeThrough:
 					return MarkdownXaml.StrikeThroughStyleKey;
 				case MarkdownXamlStyle.Subscript:
@@ -734,6 +758,17 @@ namespace Neo.Markdig.Xaml.Renderers
 				return false;
 			}
 		} // func TryGetPropertyInt32
+
+		public static bool TryGetPropertyDouble(this HtmlAttributes attributes, string name, out double value)
+		{
+			if (TryGetProperty(attributes, name, out var tmp) && Double.TryParse(tmp, out value))
+				return true;
+			else
+			{
+				value = 0;
+				return false;
+			}
+		} // func TryGetPropertyDouble
 	} // class Helper
 
 	#endregion

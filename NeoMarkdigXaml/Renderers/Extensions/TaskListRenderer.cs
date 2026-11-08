@@ -33,15 +33,17 @@ namespace Neo.Markdig.Xaml.Renderers.Extensions
         /// <param name="taskList"></param>
         protected override void Write(XamlMarkdownWriter renderer, TaskList taskList)
         {
-			var checkBox = new CheckBox {
-				IsEnabled = false,
-				IsChecked = taskList.Checked
-            };
+			renderer.WriteStartObject(typeof(InlineUIContainer));
+			renderer.WriteStartMember(nameof(InlineUIContainer.Child));
 
-            checkBox.SetResourceReference(FrameworkElement.StyleProperty, MarkdownXaml.TaskListStyleKey);
-            renderer.WriteStartObject(typeof(InlineUIContainer));
-            renderer.WriteMember("Child", checkBox);
-            renderer.WriteEndObject();
-        } // proc Write
+			renderer.WriteStartObject(typeof(CheckBox));
+			renderer.WriteResourceMember(null, MarkdownXaml.TaskListStyleKey);
+			renderer.WriteMember(CheckBox.IsEnabledProperty, false);
+			renderer.WriteMember(CheckBox.IsCheckedProperty, taskList.Checked);
+			renderer.WriteEndObject();
+
+			renderer.WriteEndMember();
+			renderer.WriteEndObject();
+		} // proc Write
 	} // class TaskListRenderer
 }

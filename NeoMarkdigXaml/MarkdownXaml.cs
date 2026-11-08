@@ -113,7 +113,8 @@ namespace Neo.Markdig.Xaml
 				.UseGridTables()
 				.UsePipeTables()
 				.UseTaskLists()
-				.UseAutoLinks();
+				.UseAutoLinks()
+				.UseAlertBlocks();
 		} // func UseXamlSupportedExtensions
 	} // class MarkdownXaml
 }

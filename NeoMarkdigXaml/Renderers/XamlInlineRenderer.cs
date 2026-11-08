@@ -230,9 +230,9 @@ namespace Neo.Markdig.Xaml.Renderers.Inlines
 				renderer.WriteMember(Image.SourceProperty, renderer.GetUri(new Uri(url, UriKind.RelativeOrAbsolute), false));
 
 				var attr = link.TryGetAttributes();
-				if (attr.TryGetPropertyInt32("width", out var width))
+				if (attr.TryGetPropertyDouble("width", out var width))
 					renderer.WriteMember(FrameworkElement.WidthProperty, width);
-				if (attr.TryGetPropertyInt32("height", out var height))
+				if (attr.TryGetPropertyDouble("height", out var height))
 					renderer.WriteMember(FrameworkElement.HeightProperty, height);
 
 				renderer.WriteEndObject();

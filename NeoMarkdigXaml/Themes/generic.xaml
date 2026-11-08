@@ -74,13 +74,82 @@
 		<Setter Property="MaxHeight" Value="{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelHeight)}" />
 		<Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelWidth)}" />
 	</Style>
+
 	<Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.QuoteBlockStyleKey}">
 		<Setter Property="BorderBrush" Value="#d1d9e0" />
 		<Setter Property="BorderThickness" Value="3,0,0,0" />
 		<Setter Property="Foreground" Value="#59636e" />
         <Setter Property="Margin" Value="16,0,0,0" />
         <Setter Property="Padding" Value="8,0,8,0" />
-	</Style>
+    </Style>
+
+    <Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockNoteStyleKey}">
+        <Setter Property="BorderBrush" Value="#0a67da" />
+        <Setter Property="BorderThickness" Value="3,0,0,0" />
+        <Setter Property="Foreground" Value="#59636e" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+    </Style>
+    <Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockTipStyleKey}">
+        <Setter Property="BorderBrush" Value="#198032" />
+        <Setter Property="BorderThickness" Value="3,0,0,0" />
+        <Setter Property="Foreground" Value="#59636e" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+    </Style>
+    <Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockImportantStyleKey}">
+        <Setter Property="BorderBrush" Value="#8353dc" />
+        <Setter Property="BorderThickness" Value="3,0,0,0" />
+        <Setter Property="Foreground" Value="#59636e" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+    </Style>
+    <Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockWarningStyleKey}">
+        <Setter Property="BorderBrush" Value="#9b6600" />
+        <Setter Property="BorderThickness" Value="3,0,0,0" />
+        <Setter Property="Foreground" Value="#59636e" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+    </Style>
+    <Style TargetType="{x:Type Section}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockCautionStyleKey}">
+        <Setter Property="BorderBrush" Value="#d12329" />
+        <Setter Property="BorderThickness" Value="3,0,0,0" />
+        <Setter Property="Foreground" Value="#59636e" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,8,0" />
+    </Style>
+
+    <Style TargetType="{x:Type Run}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockHeaderNoteStyleKey}">
+        <Setter Property="Text" Value="ⓘ Note" />
+        <Setter Property="Foreground" Value="#0a67da" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style TargetType="{x:Type Run}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockHeaderTipStyleKey}">
+        <Setter Property="Text" Value="💡 Tip" />
+        <Setter Property="Foreground" Value="#198032" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style TargetType="{x:Type Run}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockHeaderImportantStyleKey}">
+        <Setter Property="Text" Value="⚐ Important" />
+        <Setter Property="Foreground" Value="#8353dc" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style TargetType="{x:Type Run}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockHeaderWarningStyleKey}">
+        <Setter Property="Text" Value="⚠ Warning" />
+        <Setter Property="Foreground" Value="#9b6600" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style TargetType="{x:Type Run}" x:Key="{x:Static mdxaml:MarkdownXaml.AlertBlockHeaderCautionStyleKey}">
+        <Setter Property="Text" Value="⚠ Caution" />
+        <Setter Property="Foreground" Value="#d12329" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
     <Style TargetType="{x:Type Table}" x:Key="{x:Static mdxaml:MarkdownXaml.TableStyleKey}">
 		<Setter Property="BorderBrush" Value="#d1d9e0"/>
 		<Setter Property="BorderThickness" Value="1,1,0,0"/>
@@ -94,8 +163,9 @@
 	<Style TargetType="{x:Type TableRow}" x:Key="{x:Static mdxaml:MarkdownXaml.TableHeaderStyleKey}">
 		<Setter Property="FontWeight" Value="SemiBold"/>
 	</Style>
+    
 	<Style TargetType="{x:Type CheckBox}" x:Key="{x:Static mdxaml:MarkdownXaml.TaskListStyleKey}">
-		<Setter Property="Margin" Value="0,0,4,-2" />
+		<Setter Property="Margin" Value="0,0,8,-1" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.ThematicBreakStyleKey}">
 		<Setter Property="BorderBrush" Value="#d1d9e0"/>

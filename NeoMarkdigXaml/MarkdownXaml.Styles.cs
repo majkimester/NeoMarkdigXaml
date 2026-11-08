@@ -53,6 +53,26 @@ namespace Neo.Markdig.Xaml
 		Marked,
 		/// <summary>Resource Key for the QuoteBlockStyle.</summary>
 		QuoteBlock,
+		/// <summary>Resource Key for the AlertBlockNoteStyle.</summary>
+		AlertBlockNote,
+		/// <summary>Resource Key for the AlertBlockTipStyle.</summary>
+		AlertBlockTip,
+		/// <summary>Resource Key for the AlertBlockImportanttyle.</summary>
+		AlertBlockImportant,
+		/// <summary>Resource Key for the AlertBlockWarningStyle.</summary>
+		AlertBlockWarning,
+		/// <summary>Resource Key for the AlertBlockCautionStyle.</summary>
+		AlertBlockCaution,
+		/// <summary>Resource Key for the AlertBlockHeaderNoteStyle.</summary>
+		AlertBlockHeaderNote,
+		/// <summary>Resource Key for the AlertBlockHeaderTipStyle.</summary>
+		AlertBlockHeaderTip,
+		/// <summary>Resource Key for the AlertBlockHeaderImportanttyle.</summary>
+		AlertBlockHeaderImportant,
+		/// <summary>Resource Key for the AlertBlockHeaderWarningStyle.</summary>
+		AlertBlockHeaderWarning,
+		/// <summary>Resource Key for the AlertBlockHeaderCautionStyle.</summary>
+		AlertBlockHeaderCaution,
 		/// <summary>Resource Key for the StrikeThroughStyle.</summary>
 		StrikeThrough,
 		/// <summary>Resource Key for the SubscriptStyle.</summary>
@@ -148,6 +168,46 @@ namespace Neo.Markdig.Xaml
 		/// <summary>Resource Key for the QuoteBlockStyle.</summary>
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		public static ResourceKey QuoteBlockStyleKey { get; } = new StyleResourceKey(nameof(QuoteBlockStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockNoteStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockNoteStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockNoteStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockTipStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockTipStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockTipStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockImportantStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockImportantStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockImportantStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockWarningStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockWarningStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockWarningStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockCautionStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockCautionStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockCautionStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockHeaderNoteStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockHeaderNoteStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockHeaderNoteStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockHeaderTipStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockHeaderTipStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockHeaderTipStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockHeaderImportantStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockHeaderImportantStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockHeaderImportantStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockHeaderWarningStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockHeaderWarningStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockHeaderWarningStyleKey));
+
+		/// <summary>Resource Key for the AlertBlockHeaderCautionStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey AlertBlockHeaderCautionStyleKey { get; } = new StyleResourceKey(nameof(AlertBlockHeaderCautionStyleKey));
 
 		/// <summary>Resource Key for the StrikeThroughStyle.</summary>
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
