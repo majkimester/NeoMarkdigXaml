@@ -108,6 +108,7 @@ namespace Neo.Markdig.Xaml
 			if (pipeline == null) 
 				throw new ArgumentNullException(nameof(pipeline));
 			return pipeline
+				.UseGenericAttributes()
 				.UseEmphasisExtras()
 				.UseGridTables()
 				.UsePipeTables()

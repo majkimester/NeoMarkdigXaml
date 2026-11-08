@@ -29,8 +29,6 @@
 	<Style TargetType="{x:Type Hyperlink}" x:Key="{x:Static mdxaml:MarkdownXaml.HyperlinkStyleKey}">
 		<Setter Property="Foreground" Value="#0969da" />
 		<Setter Property="TextDecorations" Value="None" />
-		<Setter Property="Command" Value="{x:Static mdxaml:MarkdownXaml.Hyperlink}" />
-		<Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=NavigateUri}" />
 	</Style>
 	<Style TargetType="{x:Type Paragraph}" x:Key="{x:Static mdxaml:MarkdownXaml.Heading1StyleKey}">
 		<Setter Property="FontSize" Value="32" />

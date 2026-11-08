@@ -65,9 +65,9 @@ To include an web image, use an exclamation mark followed by alt text and the im
 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
-And local image:
+And local image with defined size:
 
-![Local image](sampleimage.jpg "Local image")
+![Local image](sampleimage.jpg "Local image"){width=100}
 
 
 ## Hard Line Breaks

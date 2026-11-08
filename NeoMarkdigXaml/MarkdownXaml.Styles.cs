@@ -21,7 +21,6 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Input;
 
 namespace Neo.Markdig.Xaml
 {
@@ -186,7 +185,5 @@ namespace Neo.Markdig.Xaml
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		public static ResourceKey HyperlinkStyleKey { get; } = new StyleResourceKey(nameof(HyperlinkStyleKey));
 
-		/// <summary>Routed command for Hyperlink.</summary>
-		public static RoutedCommand Hyperlink { get; } = new RoutedCommand(nameof(Hyperlink), typeof(MarkdownXaml));
 	} // classs MarkdownXaml
 }
