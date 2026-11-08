@@ -663,7 +663,7 @@ namespace Neo.Markdig.Xaml.Renderers
 			if (!enforceUri && uri.IsAbsoluteUri)
 			{
 				if (uri.Scheme == "file")
-					return uri.AbsolutePath;
+					return uri.LocalPath;
 				else
 					return uri;
 			}
