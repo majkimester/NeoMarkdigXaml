@@ -108,13 +108,14 @@ namespace Neo.Markdig.Xaml
 			if (pipeline == null) 
 				throw new ArgumentNullException(nameof(pipeline));
 			return pipeline
-				.UseGenericAttributes()
 				.UseEmphasisExtras()
 				.UseGridTables()
 				.UsePipeTables()
 				.UseTaskLists()
 				.UseAutoLinks()
-				.UseAlertBlocks();
+				.UseAlertBlocks()
+				.UseEmojiAndSmiley(enableSmileys: false)
+				.UseGenericAttributes();   // UseGenericAttributes shall be the last (It is needed for Image size definition like {width="200"})
 		} // func UseXamlSupportedExtensions
 	} // class MarkdownXaml
 }

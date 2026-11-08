@@ -36,6 +36,7 @@ Additionally, the following extensions are supported:
 - Extra emphasis
 - Task list
 - Alerts
+- EmoJi
 
 ## Styles
 

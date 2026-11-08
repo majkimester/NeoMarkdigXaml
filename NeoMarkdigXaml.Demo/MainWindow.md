@@ -120,7 +120,7 @@ Below is a table demonstrating left, center, and right text justification as sup
 - [ ] Write tests
 - [ ] Release
 
-## Alerts
+## Alert blocks
 
 Alerts, also sometimes known as callouts or admonitions, are a Markdown extension based on the blockquote syntax that you can use to emphasize critical information.
 
@@ -138,3 +138,16 @@ Alerts, also sometimes known as callouts or admonitions, are a Markdown extensio
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
+
+## Emoji
+
+Smile: :smile:  
+Like: :+1:  
+Heart: :heart:  
+Rocket: :rocket:  
+Warning: :warning:  
+Star: :star:  
+Fire: :fire:  
+Bug: :bug:  
+Bulb: :bulb:   
+Memo: :memo:
