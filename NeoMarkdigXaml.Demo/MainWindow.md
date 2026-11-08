@@ -12,7 +12,6 @@ To create a heading, add one to six # symbols before your heading text.
 
 Bold: **This is bold text**  
 Italic: _This text is italicized_  
-Strikethrough: ~~This was mistaken text~~  
 Bold and nested italic: **This text is _extremely_ important**  
 All bold and italic: ***All this text is important***  
 
@@ -79,6 +78,14 @@ You can separate your section with horizontal ruler.
 Continue text after ruler.
 
 # Extensions
+
+## Emphasis extras
+
+Strikethrough: ~~This was mistaken text~~\
+Subscript: H~2~O is water.\
+Superscript: 2^10^ is 1024.\
+Inserted text: This text has been ++inserted++.\
+Marked/highlighted text: This is ==highlighted== text.
 
 ## Tables
 

@@ -174,11 +174,13 @@
 		<Setter Property="Margin" Value="0,24,0,24" />
 	</Style>
 	<Style TargetType="{x:Type Span}" x:Key="{x:Static mdxaml:MarkdownXaml.SubscriptStyleKey}">
-		<Setter Property="Typography.Variants" Value="Subscript" />
-	</Style>
+        <Setter Property="BaselineAlignment" Value="Subscript"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
 	<Style TargetType="{x:Type Span}" x:Key="{x:Static mdxaml:MarkdownXaml.SuperscriptStyleKey}">
-		<Setter Property="Typography.Variants" Value="Superscript" />
-	</Style>
+        <Setter Property="BaselineAlignment" Value="Superscript"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
 	<Style TargetType="{x:Type Span}" x:Key="{x:Static mdxaml:MarkdownXaml.StrikeThroughStyleKey}">
 		<Setter Property="TextBlock.TextDecorations" Value="Strikethrough" />
 	</Style>
