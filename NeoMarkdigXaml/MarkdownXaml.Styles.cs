@@ -89,8 +89,14 @@ namespace Neo.Markdig.Xaml
 		TaskList,
 		/// <summary>Resource Key for the ThematicBreakStyle.</summary>
 		ThematicBreak,
-		/// <summary></summary>
-		Hyperlink
+		/// <summary>Resource Key for the HyperlinkStyle.</summary>
+		Hyperlink,
+		/// <summary>Resource Key for the MathBlockStyle.</summary>
+		MathBlock,
+		/// <summary>Resource Key for the MathBlockFormulaStyle.</summary>
+		MathBlockFormula,
+		/// <summary>Resource Key for the MathInlineFormulaStyle.</summary>
+		MathInlineFormula,
 	} // enum MarkdownXamlStyle
 
 	public static partial class MarkdownXaml
@@ -241,9 +247,21 @@ namespace Neo.Markdig.Xaml
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		public static ResourceKey ThematicBreakStyleKey { get; } = new StyleResourceKey(nameof(ThematicBreakStyleKey));
 
-		/// <summary></summary>
+		/// <summary>Resource Key for the HyperlinkStyle.</summary>
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		public static ResourceKey HyperlinkStyleKey { get; } = new StyleResourceKey(nameof(HyperlinkStyleKey));
+
+		/// <summary>Resource Key for the MathBlockStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey MathBlockStyleKey { get; } = new StyleResourceKey(nameof(MathBlockStyleKey));
+
+		/// <summary>Resource Key for the MathBlockFormulaStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey MathBlockFormulaStyleKey { get; } = new StyleResourceKey(nameof(MathBlockFormulaStyleKey));
+
+		/// <summary>Resource Key for the MathInlineFormulaStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey MathInlineFormulaKey { get; } = new StyleResourceKey(nameof(MathInlineFormulaKey));
 
 	} // classs MarkdownXaml
 }

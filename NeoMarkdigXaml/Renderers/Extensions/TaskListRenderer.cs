@@ -18,7 +18,6 @@
 // under the License.
 //
 #endregion
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using Markdig.Extensions.TaskLists;

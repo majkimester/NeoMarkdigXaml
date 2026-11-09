@@ -35,6 +35,7 @@ Additionally, the following extensions are supported:
 - Tables
 - Extra emphasis
 - Task list
+- Mathematics (with WpfMath)
 - Alerts
 - EmoJi
 

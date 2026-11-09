@@ -115,6 +115,7 @@ namespace Neo.Markdig.Xaml
 				.UseAutoLinks()
 				.UseAlertBlocks()
 				.UseEmojiAndSmiley(enableSmileys: false)
+				.UseMathematics()
 				.UseGenericAttributes();   // UseGenericAttributes shall be the last (It is needed for Image size definition like {width="200"})
 		} // func UseXamlSupportedExtensions
 	} // class MarkdownXaml

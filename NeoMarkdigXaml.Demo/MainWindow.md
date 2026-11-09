@@ -19,7 +19,8 @@ All bold and italic: ***All this text is important***
 
 Below text is a quote:
 
-> This is a blockquote. It is used to highlight quotes, notes, or external references.
+> This is a blockquote.\
+> It is used to highlight quotes, notes, or external references.
 
 ## Code
 
@@ -119,6 +120,20 @@ Below is a table demonstrating left, center, and right text justification as sup
 - [x] Implement feature
 - [ ] Write tests
 - [ ] Release
+
+## Mathematics
+
+This extension supports LaTeX-style math using \$ for inline and \$\$ for display (block) math.
+
+Wrap math expressions with single \$ for inline math:
+
+The quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.
+
+Wrap display equations with $$ on their own lines:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
 
 ## Alert blocks
 

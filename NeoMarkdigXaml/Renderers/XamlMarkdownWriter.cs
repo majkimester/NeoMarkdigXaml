@@ -103,6 +103,8 @@ namespace Neo.Markdig.Xaml.Renderers
 			// Extension renderers
 			ObjectRenderers.Add(new AlertBlockRenderer());            // Shall be before QuoteBlockRenderer
 			ObjectRenderers.Add(new AlertHeaderInlineRenderer());
+			ObjectRenderers.Add(new MathBlockRenderer());
+			ObjectRenderers.Add(new MathInlineRenderer());
 			ObjectRenderers.Add(new TableRenderer());
 			ObjectRenderers.Add(new TaskListRenderer());
 
@@ -631,6 +633,14 @@ namespace Neo.Markdig.Xaml.Renderers
 					return MarkdownXaml.ThematicBreakStyleKey;
 				case MarkdownXamlStyle.Hyperlink:
 					return MarkdownXaml.HyperlinkStyleKey;
+
+				case MarkdownXamlStyle.MathBlock:
+					return MarkdownXaml.MathBlockStyleKey;
+				case MarkdownXamlStyle.MathBlockFormula:
+					return MarkdownXaml.MathBlockFormulaStyleKey;
+				case MarkdownXamlStyle.MathInlineFormula:
+					return MarkdownXaml.MathInlineFormulaKey;
+
 				default:
 					throw new ArgumentOutOfRangeException(nameof(style));
 			}
