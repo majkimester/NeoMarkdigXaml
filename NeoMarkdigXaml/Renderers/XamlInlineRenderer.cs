@@ -19,12 +19,15 @@
 //
 #endregion
 using System;
+using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Xaml;
 using Markdig.Renderers.Html;
 using Markdig.Syntax.Inlines;
@@ -216,26 +219,54 @@ namespace Neo.Markdig.Xaml.Renderers.Inlines
 
 			if (link.IsImage)
 			{
+				var attr = link.TryGetAttributes();
+				attr.TryGetPropertyDouble("width", out var width);
+				attr.TryGetPropertyDouble("height", out var height);
+
 				if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
 					url = "#";
 
 				WriteStartHyperlink(renderer, url, link.Title, Commands.Image);
 				renderer.WriteStartItems(renderer.GetContentProperty(), false);
 
-
 				renderer.WriteStartObject(typeof(Image));
 				renderer.WriteResourceMember(null, MarkdownXamlStyle.Image);
 				if (!String.IsNullOrEmpty(link.Title))
 					renderer.WriteMember(ToolTipService.ToolTipProperty, link.Title);
-				renderer.WriteMember(Image.SourceProperty, renderer.GetUri(new Uri(url, UriKind.RelativeOrAbsolute), false));
+				
+				if (width > 0) renderer.WriteMember(FrameworkElement.WidthProperty, width);
+				if (height > 0) renderer.WriteMember(FrameworkElement.HeightProperty, height);
 
-				var attr = link.TryGetAttributes();
-				if (attr.TryGetPropertyDouble("width", out var width))
-					renderer.WriteMember(FrameworkElement.WidthProperty, width);
-				if (attr.TryGetPropertyDouble("height", out var height))
-					renderer.WriteMember(FrameworkElement.HeightProperty, height);
+				var imageUri = renderer.GetUri(new Uri(url, UriKind.RelativeOrAbsolute), false);
 
-				renderer.WriteEndObject();
+				if (renderer.ExternalImageLoader != null)
+				{
+					// Load files via async binding to ImageSourceLoader
+					renderer.WriteStartMember(Image.SourceProperty);
+					renderer.WriteStartObject(typeof(Binding));
+
+					renderer.WriteMember(typeof(Binding), nameof(Binding.Path), "Image");
+					renderer.WriteMember(typeof(Binding), nameof(Binding.IsAsync), true);
+					renderer.WriteMember(typeof(Binding), nameof(Binding.Mode), BindingMode.OneTime);
+
+					renderer.WriteStartMember(typeof(Binding), nameof(Binding.Source));
+					renderer.WriteStartObject(typeof(ImageSourceLoader));
+					renderer.WriteMember(typeof(ImageSourceLoader), nameof(ImageSourceLoader.BitmapSourceLoader), renderer.ExternalImageLoader);
+					renderer.WriteMember(typeof(ImageSourceLoader), nameof(ImageSourceLoader.Uri), imageUri);
+					renderer.WriteMember(typeof(ImageSourceLoader), nameof(ImageSourceLoader.Width), (int)width);
+					renderer.WriteMember(typeof(ImageSourceLoader), nameof(ImageSourceLoader.Height), (int)height);
+					renderer.WriteEndObject();
+					renderer.WriteEndMember();
+
+					renderer.WriteEndObject();   // Binding
+					renderer.WriteEndMember();   // Image.Source
+				}
+				else
+				{
+					renderer.WriteMember(Image.SourceProperty, imageUri);
+				}
+
+				renderer.WriteEndObject();   // Image
 
 				renderer.WriteEndItems();
 				WriteEndHyperlink(renderer);

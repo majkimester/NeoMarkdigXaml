@@ -25,6 +25,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Xaml;
 using Markdig.Helpers;
@@ -216,6 +217,16 @@ namespace Neo.Markdig.Xaml.Renderers
 			}
 		}
 
+		/// <summary>Start a member whose value is a nested object. Close with WriteEndMember().</summary>
+		/// <param name="type"></param>
+		/// <param name="memberName"></param>
+		public void WriteStartMember(Type type, string memberName)
+		{
+			if (IsPendingText)
+				throw new InvalidOperationException("Start member during text collection.");
+			writer.WriteStartMember(GetMember(type, memberName));
+		}
+
 		/// <summary>Start a member.</summary>
 		/// <param name="memberName"></param>
 		public void WriteStartMember(string memberName)
@@ -289,6 +300,23 @@ namespace Neo.Markdig.Xaml.Renderers
 			}
 			else
 				currentContentMember = null;
+		}
+
+		private XamlMember GetMember(Type type, string memberName)
+		{
+			var member = writer.SchemaContext.GetXamlType(type).GetMember(memberName);
+			if (member == null)
+				throw new ArgumentException($"Member {type.Name}.{memberName} not found.");
+			return member;
+		}
+
+		/// <summary>Write a member of an explicit type (CLR property, not a DependencyProperty).</summary>
+		/// <param name="type"></param>
+		/// <param name="memberName"></param>
+		/// <param name="value"></param>
+		public void WriteMember(Type type, string memberName, object value)
+		{
+			WriteMember(GetMember(type, memberName), value);
 		}
 
 		/// <summary>Write a complete member.</summary>
@@ -719,6 +747,10 @@ namespace Neo.Markdig.Xaml.Renderers
 
 		/// <summary>Define a BaseUri for the uri</summary>
 		public Uri BaseUri { get; set; } = null;
+
+		/// <summary>Bitmap loader to convert url to BitmapSource</summary>
+		public IExternalImageLoader ExternalImageLoader { get; set; } = null;
+
 		/// <summary>Acces to current schema context.</summary>
 		public XamlSchemaContext SchemaContext => writer.SchemaContext;
 	} // class XamlMarkdownWriter

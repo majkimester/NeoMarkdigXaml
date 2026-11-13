@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Data;
 using Markdig;
 using Neo.Markdig.Xaml;
+using Neo.Markdig.Xaml.Renderers;
 
 namespace NeoMarkdigXaml.Demo
 {
@@ -14,6 +15,8 @@ namespace NeoMarkdigXaml.Demo
         private static readonly MarkdownPipeline TaskListPipeline = new MarkdownPipelineBuilder()
             .UseXamlSupportedExtensions()
             .Build();
+
+        private static readonly IExternalImageLoader BitmapSourceLoader = new ExternalImageLoaderDefault();
 
         /// <summary>
         /// Converts a value. 
@@ -56,7 +59,7 @@ namespace NeoMarkdigXaml.Demo
                 baseUri = new Uri(AppDomain.CurrentDomain.BaseDirectory, UriKind.Absolute);
             }
 
-            return MarkdownXaml.ToFlowDocument(text, TaskListPipeline, baseUri);
+            return MarkdownXaml.ToFlowDocument(text, TaskListPipeline, baseUri, BitmapSourceLoader);
         }
 
         /// <summary>
