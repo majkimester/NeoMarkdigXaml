@@ -10,7 +10,7 @@
     <Grid>
 		<FlowDocumentScrollViewer x:Name="flowDocumentViewer">
 			<FlowDocumentScrollViewer.CommandBindings>
-				<CommandBinding Command="{x:Static md:MarkdownXaml.Hyperlink}" Executed="CommandBinding_Executed" />
+                <CommandBinding Command="{x:Static md:Commands.Hyperlink}" Executed="CommandBinding_Executed" />
 			</FlowDocumentScrollViewer.CommandBindings>
 		</FlowDocumentScrollViewer>
 	</Grid>
