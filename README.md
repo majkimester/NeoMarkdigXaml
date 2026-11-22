@@ -37,6 +37,7 @@ Additionally, the following extensions are supported:
 - Task list
 - Mathematics (with WpfMath)
 - Alerts
+- Auto-identifiers (link within document and TOC)
 - EmoJi
 
 ## Styles

@@ -71,7 +71,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TextToFlowDocumentMultiValueConverter.cs" />
+    <Compile Include="Converters\FlowDocumentToBookmarksValueConverter.cs" />
+    <Compile Include="Converters\TextToFlowDocumentMultiValueConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

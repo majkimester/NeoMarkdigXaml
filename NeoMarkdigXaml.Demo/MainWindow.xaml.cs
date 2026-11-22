@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Neo.Markdig.Xaml;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NeoMarkdigXaml.Demo
@@ -58,14 +60,27 @@ namespace NeoMarkdigXaml.Demo
             ((DemoViewModel)this.DataContext).TextPreview = ((DemoViewModel)this.DataContext).TextMarkdown;
         }
 
-        private void OpenHyperlink(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
         {
+            if (MarkdownNavigation.TryNavigateInternal(e.OriginalSource ?? sender, e.Parameter))
+            {
+                return;
+            }
+
             Process.Start(e.Parameter.ToString());
         }
 
-        private void ClickOnImage(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void ClickOnImage(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show($"URL: {e.Parameter}");
+        }
+
+        private void BookmarkTree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (sender is TreeView treeView && treeView.SelectedItem is MarkdownBookmark bookmark)
+            {
+                MarkdownNavigation.TryNavigateInternal(TocDemoFlowDocunentViewer, "#" + bookmark.Id);
+            }
         }
     }
 }

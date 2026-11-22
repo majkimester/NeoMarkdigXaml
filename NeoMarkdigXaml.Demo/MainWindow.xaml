@@ -11,6 +11,7 @@
     <Window.Resources>
 
         <demo:TextToFlowDocumentMultiValueConverter x:Key="TextToFlowDocumentMultiValueConverter"/>
+        <demo:FlowDocumentToBookmarksValueConverter x:Key="FlowDocumentToBookmarksValueConverter"/>
 
         <demo:BoolToEnabledConverter x:Key="BoolToEnabledConverter"/>
 
@@ -118,6 +119,60 @@
                     </FlowDocumentScrollViewer>
                 </Grid>
             </TabItem>
+
+            <TabItem Header="TOC">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TreeView x:Name="TOCView"
+                             Grid.Row="0"
+                             Grid.Column="0"
+                             VerticalAlignment="Stretch"
+                             HorizontalAlignment="Stretch"
+                             Margin="5" 
+                             FontFamily="Consolas"
+                             BorderBrush="DimGray"
+                             BorderThickness="1"/>
+
+                    <TreeView x:Name="BookmarkTree" 
+                          Grid.Row="0"
+                          Grid.Column="0"
+                          ItemsSource="{Binding ElementName=TocDemoFlowDocunentViewer, Path=Document, Mode=OneWay, Converter={StaticResource FlowDocumentToBookmarksValueConverter}}"
+                          HorizontalContentAlignment="Stretch"
+                          HorizontalAlignment="Stretch"
+                          SelectedItemChanged="BookmarkTree_SelectedItemChanged"
+                          BorderThickness="0"
+                          >
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children, Mode=OneWay}" DataType="{x:Type neo:MarkdownBookmark}">
+                                <TextBlock Text="{Binding Header, Mode=OneWay}" />
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+
+                    <FlowDocumentScrollViewer 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        x:Name="TocDemoFlowDocunentViewer"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        BorderBrush="DimGray"
+                        BorderThickness="1"
+                        VerticalScrollBarVisibility="Auto">
+                        <FlowDocumentScrollViewer.Document>
+                            <MultiBinding Converter="{StaticResource TextToFlowDocumentMultiValueConverter}">
+                                <Binding ElementName="demoSource" Path="Text" />
+                                <Binding Path="ImageBaseDir" />
+                            </MultiBinding>
+                        </FlowDocumentScrollViewer.Document>
+                    </FlowDocumentScrollViewer>
+                </Grid>
+            </TabItem>
+
         </TabControl>
 
     </Grid>

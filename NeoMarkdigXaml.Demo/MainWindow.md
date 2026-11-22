@@ -1,4 +1,4 @@
-﻿# Document Title
+﻿# Document Title {#DocumentTitle}
 
 To create a heading, add one to six # symbols before your heading text. 
 
@@ -37,6 +37,11 @@ Auto link:
 <https://commonmark.org>
 
 You can easily insert [inline links with text](https://commonmark.org) that direct to websites. 
+
+Jump inside the document:
+
+[TOP](#DocumentTitle "Jump to the TOP")  
+[Mathematics](#MatematicsTitle "Jump to the Matematics")
 
 ## Line breaks
 
@@ -121,7 +126,7 @@ Below is a table demonstrating left, center, and right text justification as sup
 - [ ] Write tests
 - [ ] Release
 
-## Mathematics
+## Mathematics {#MatematicsTitle}
 
 This extension supports LaTeX-style math using \$ for inline and \$\$ for display (block) math.
 

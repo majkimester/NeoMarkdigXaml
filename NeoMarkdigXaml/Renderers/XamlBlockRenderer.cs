@@ -22,6 +22,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using Markdig.Syntax;
+using Markdig.Renderers.Html;
 
 namespace Neo.Markdig.Xaml.Renderers
 {
@@ -66,6 +67,15 @@ namespace Neo.Markdig.Xaml.Renderers
 		{
 			renderer.WriteStartObject(typeof(Paragraph));
 			renderer.WriteResourceMember(null, GetStyleKey(headingBlock.Level));
+
+			var id = headingBlock.TryGetAttributes()?.Id;
+			if (!string.IsNullOrEmpty(id))
+			{
+				renderer.WriteMember(MarkdownAttached.LevelProperty, headingBlock.Level);
+				renderer.WriteMember(MarkdownAttached.IdProperty, id);
+				renderer.WriteMember(MarkdownAttached.HeaderProperty, MarkdigUtil.GetPlainText(headingBlock));
+			}
+
 			renderer.WriteItems(headingBlock);
 			renderer.WriteEndObject();
 		} // proc Write
