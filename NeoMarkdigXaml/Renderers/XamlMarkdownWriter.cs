@@ -655,8 +655,14 @@ namespace Neo.Markdig.Xaml.Renderers
 					return MarkdownXaml.TableCellStyleKey;
 				case MarkdownXamlStyle.TableHeader:
 					return MarkdownXaml.TableHeaderStyleKey;
+
 				case MarkdownXamlStyle.TaskList:
 					return MarkdownXaml.TaskListStyleKey;
+				case MarkdownXamlStyle.List:
+					return MarkdownXaml.ListStyleKey;
+				case MarkdownXamlStyle.ListItem:
+					return MarkdownXaml.ListItemStyleKey;
+
 				case MarkdownXamlStyle.ThematicBreak:
 					return MarkdownXaml.ThematicBreakStyleKey;
 				case MarkdownXamlStyle.Hyperlink:
@@ -667,7 +673,7 @@ namespace Neo.Markdig.Xaml.Renderers
 				case MarkdownXamlStyle.MathBlockFormula:
 					return MarkdownXaml.MathBlockFormulaStyleKey;
 				case MarkdownXamlStyle.MathInlineFormula:
-					return MarkdownXaml.MathInlineFormulaKey;
+					return MarkdownXaml.MathInlineFormulaStyleKey;
 
 				default:
 					throw new ArgumentOutOfRangeException(nameof(style));

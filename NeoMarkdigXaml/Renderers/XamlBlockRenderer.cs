@@ -107,6 +107,7 @@ namespace Neo.Markdig.Xaml.Renderers
 		protected override void Write(XamlMarkdownWriter renderer, ListBlock listBlock)
 		{
 			renderer.WriteStartObject(typeof(List));
+			renderer.WriteResourceMember(null, MarkdownXaml.ListStyleKey);
 
 			if (listBlock.IsOrdered)
 			{
@@ -129,6 +130,7 @@ namespace Neo.Markdig.Xaml.Renderers
 			foreach (var cur in listBlock)
 			{
 				renderer.WriteStartObject(typeof(ListItem));
+				renderer.WriteResourceMember(null, MarkdownXaml.ListItemStyleKey);
 				renderer.WriteItems((ContainerBlock)cur);
 				renderer.WriteEndObject();
 			}

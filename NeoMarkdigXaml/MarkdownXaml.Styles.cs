@@ -88,6 +88,10 @@ namespace Neo.Markdig.Xaml
 		/// <summary>Resource Key for the TaskListStyle.</summary>
 		TaskList,
 		/// <summary>Resource Key for the ThematicBreakStyle.</summary>
+		List,
+		/// <summary>Resource Key for the TaskStyle.</summary>
+		ListItem,
+		/// <summary>Resource Key for the TaskItemStyle.</summary>
 		ThematicBreak,
 		/// <summary>Resource Key for the HyperlinkStyle.</summary>
 		Hyperlink,
@@ -243,6 +247,14 @@ namespace Neo.Markdig.Xaml
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		public static ResourceKey TaskListStyleKey { get; } = new StyleResourceKey(nameof(TaskListStyleKey));
 
+		/// <summary>Resource Key for the ListStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey ListStyleKey { get; } = new StyleResourceKey(nameof(ListStyleKey));
+
+		/// <summary>Resource Key for the ListItemStyle.</summary>
+		[EditorBrowsable(EditorBrowsableState.Advanced)]
+		public static ResourceKey ListItemStyleKey { get; } = new StyleResourceKey(nameof(ListItemStyleKey));
+
 		/// <summary>Resource Key for the ThematicBreakStyle.</summary>
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		public static ResourceKey ThematicBreakStyleKey { get; } = new StyleResourceKey(nameof(ThematicBreakStyleKey));
@@ -261,7 +273,7 @@ namespace Neo.Markdig.Xaml
 
 		/// <summary>Resource Key for the MathInlineFormulaStyle.</summary>
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
-		public static ResourceKey MathInlineFormulaKey { get; } = new StyleResourceKey(nameof(MathInlineFormulaKey));
+		public static ResourceKey MathInlineFormulaStyleKey { get; } = new StyleResourceKey(nameof(MathInlineFormulaStyleKey));
 
 	} // classs MarkdownXaml
 }

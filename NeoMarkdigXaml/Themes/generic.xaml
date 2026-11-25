@@ -104,9 +104,14 @@
 
     <!-- List styles -->
 
-    <Style TargetType="{x:Type List}">
+    <Style TargetType="{x:Type List}" x:Key="{x:Static mdxaml:MarkdownXaml.ListStyleKey}">
         <Setter Property="FontFamily" Value="Segoe UI" />
         <Setter Property="Margin" Value="32,0,0,0" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+    </Style>
+
+    <Style TargetType="{x:Type ListItem}" x:Key="{x:Static mdxaml:MarkdownXaml.ListItemStyleKey}">
+        <Setter Property="Margin" Value="0,0,0,0" />
         <Setter Property="Padding" Value="0,0,0,0" />
     </Style>
 
@@ -169,7 +174,7 @@
         <Setter Property="Padding" Value="8,8,8,8" />
     </Style>
 
-    <Style TargetType="{x:Type math:FormulaControl}" x:Key="{x:Static mdxaml:MarkdownXaml.MathInlineFormulaKey}">
+    <Style TargetType="{x:Type math:FormulaControl}" x:Key="{x:Static mdxaml:MarkdownXaml.MathInlineFormulaStyleKey}">
         <Setter Property="Scale" Value="20.0" />
         <Setter Property="Padding" Value="8,8,8,8" />
     </Style>
