@@ -15,6 +15,12 @@
 
         <demo:BoolToEnabledConverter x:Key="BoolToEnabledConverter"/>
 
+        <!-- Idea from https://stackoverflow.com/a/4080545 -->
+        <Style x:Key="MTreeViewBookmarkItemStyleSelectable" TargetType="{x:Type TreeViewItem}">
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+        </Style>
+
     </Window.Resources>
     <FrameworkElement.CommandBindings>
         <CommandBinding Command="{x:Static neo:Commands.Hyperlink}" Executed="OpenHyperlink" />
@@ -141,6 +147,7 @@
                           Grid.Row="0"
                           Grid.Column="0"
                           ItemsSource="{Binding ElementName=TocDemoFlowDocunentViewer, Path=Document, Mode=OneWay, Converter={StaticResource FlowDocumentToBookmarksValueConverter}}"
+                          ItemContainerStyle="{StaticResource MTreeViewBookmarkItemStyleSelectable}"
                           HorizontalContentAlignment="Stretch"
                           HorizontalAlignment="Stretch"
                           SelectedItemChanged="BookmarkTree_SelectedItemChanged"

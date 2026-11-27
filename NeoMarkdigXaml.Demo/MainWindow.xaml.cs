@@ -1,5 +1,6 @@
 ﻿using Neo.Markdig.Xaml;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -62,12 +63,46 @@ namespace NeoMarkdigXaml.Demo
 
         private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
         {
-            if (MarkdownNavigation.TryNavigateInternal(e.OriginalSource ?? sender, e.Parameter))
-            {
-                return;
-            }
+            string link = e?.Parameter?.ToString();
+            if (string.IsNullOrEmpty(link)) return;
 
-            Process.Start(e.Parameter.ToString());
+            if (link.StartsWith("#"))
+            {
+                List<MarkdownBookmark> bookmarks = BookmarkTree.ItemsSource as List<MarkdownBookmark>;
+                if (bookmarks == null) return;
+                SelectAndExpandBookmark(bookmarks, link.Substring(1));
+                MarkdownNavigation.TryNavigateInternal(TocDemoFlowDocunentViewer, link);
+            }
+            else
+            {
+                Process.Start(link);
+            }
+        }
+
+        public static MarkdownBookmark SelectAndExpandBookmark(ICollection<MarkdownBookmark> bookmarks, string id)
+        {
+            if (bookmarks == null) return null;
+            foreach (var bookmark in bookmarks)
+            {
+                if (bookmark.Id == id)
+                {
+                    // Select target bookmark
+                    bookmark.IsSelected = true;
+                    bookmark.OnPropertyChanged(nameof(MarkdownBookmark.IsSelected));
+                    bookmark.IsExpanded = true;
+                    bookmark.OnPropertyChanged(nameof(MarkdownBookmark.IsExpanded));
+                    return bookmark;
+                }
+                MarkdownBookmark result = SelectAndExpandBookmark(bookmark.Children, id);
+                if (result != null)
+                {
+                    // Expand all parent bookmarks
+                    bookmark.IsExpanded = true;
+                    bookmark.OnPropertyChanged(nameof(MarkdownBookmark.IsExpanded));
+                    return result;
+                }
+            }
+            return null;
         }
 
         private void ClickOnImage(object sender, ExecutedRoutedEventArgs e)

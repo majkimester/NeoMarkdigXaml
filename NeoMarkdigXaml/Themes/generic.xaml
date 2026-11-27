@@ -93,6 +93,11 @@
     <Style TargetType="{x:Type Hyperlink}" x:Key="{x:Static mdxaml:MarkdownXaml.HyperlinkStyleKey}">
         <Setter Property="Foreground" Value="#0969da" />
         <Setter Property="TextDecorations" Value="None" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <!-- Image styles -->
